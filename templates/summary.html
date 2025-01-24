@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkMaster - Summary</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<style>
+    /* Navigation bar styles */
+    nav {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+    
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<body>
+    <!-- Navigation Bar -->
+    <body style="background-image:url(../static/bg.png);">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+                <li><a href="{{ url_for('search') }}">Search</a></li>
+                <li><a href="{{ url_for('summary') }}">Summary</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Main Summary Section -->
+        <section class="summary-section">
+            <h1>Parking Lot Summary</h1>
+            <div class="summary-box">
+                <!-- Total Vehicles Parked -->
+                <div class="summary-item">
+                    <h2>Total Vehicles Parked</h2>
+                    <p id="total-vehicles">{{ total_vehicles }}</p> <!-- Dynamically filled -->
+                </div>
+    
+                <!-- Available Parking Spaces -->
+                <div class="summary-item">
+                    <h2>Available Spaces</h2>
+                    <p id="available-spaces">{{ available_spaces }}</p> <!-- Dynamically filled -->
+                </div>
+            </div>
+    
+            <!-- Recent Entries and Exits Table -->
+            <div class="recent-entries">
+                <h2>Recent Entries and Exits</h2>
+                <table id="entries-table">
+                    <thead>
+                        <tr>
+                            <th>Number Plate</th>
+                            <th>Entry Time</th>
+                            <th>Exit Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in recent_records %}
+                            <tr>
+                                <td>{{ record.number_plate }}</td>
+                                <td>{{ record.entry_time }}</td>
+                                <td>{{ record.exit_time or "Still Parked" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+            <p>ParkMaster &copy; 2025</p>
+        </footer>
+    </body>
+    
+</html>

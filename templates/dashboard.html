@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkMaster Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-image: url(../static/bg.png);
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #003366cd; 
+            padding: 20px 0;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-left: 20px;
+        }
+
+        .user-info {
+            margin-right: 20px;
+        }
+
+        .btn {
+            background-color: #ff6600; 
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left:20px;
+        }
+
+        .btn:hover {
+            background-color: #cc5200;
+        }
+
+        main {
+            padding: 30px 0;
+        }
+
+        .dashboard-overview {
+            background-color: #477ced28;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-overview h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            background-color: #aed0f43b;
+            padding: 20px;
+            border-radius: 8px;
+            width: 45%;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .upload-section {
+            background-color: #3db9ea34;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .upload-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .upload-section p {
+            margin-bottom: 20px;
+        }
+
+        .upload-section input[type="file"] {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            background-color: #477ced28;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .upload-section button.upload-btn {
+            background-color: #ff6600;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .upload-section button.upload-btn:hover {
+            background-color: #cc5200;
+        }
+
+        .recent-uploads {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .recent-uploads li {
+            background-color: #477ced28;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #003366;
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Flash message styles */
+        .flash {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .flash.warning {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .flash.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flash.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            margin-left: 600px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ParkMaster</h1>
+            <div class="user-info">
+                <span>Welcome, <strong>{{ user.name }}</strong></span>
+                <a href="{{ url_for('dashboard') }}" class="btn">Home</a>
+                <a href="{{ url_for('search') }}" class="btn">Search</a>
+                <a href="{{ url_for('summary') }}" class="btn">Summary</a>
+                <a href="{{ url_for('logout') }}" class="btn">Log Out</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash {{ messages[0][0] }}">
+                        {% for category, message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Dashboard Overview -->
+            <section class="dashboard-overview">
+                <h2>Parking Data</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>Cars in Parking</h3>
+                        <p>{{ cars_in_parking }}</p> 
+                    </div>
+                    <div class="stat-item">
+                        <h3>Parking Availability</h3>
+                        <p>{{ parking_availability }} slots</p> 
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>Upload Video</h2>
+                <p>Upload a video to detect car number plates and log entry/exit times.</p>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="video" accept="video/*" required>
+                    <button type="submit" class="upload-btn">Upload</button>
+                </form>
+
+                <h3>Recent Uploads</h3>
+                <ul class="recent-uploads">
+                    {% for video in recent_uploads %}
+                        <li>{{ video }} - {% if loop.index == 1 %}Processed{% else %}Pending{% endif %}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+        <div class="form-container">
+            <h2>Set ESP32-CAM Stream URL</h2>
+            <form id="streamUrlForm">
+                <label for="url">ESP32-CAM Stream URL</label>
+                <input type="text" id="url" name="url" placeholder="http://<ESP32_IP>:<PORT>/stream" required>
+                <button type="submit">Set URL</button>
+            </form>
+            <div id="message" class="message"></div>
+        </div>
+    
+        <script>
+            const form = document.getElementById('streamUrlForm');
+            const messageDiv = document.getElementById('message');
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Prevent form submission from reloading the page
+    
+                const urlInput = document.getElementById('url').value;
+    
+                // Make a POST request to the Flask endpoint
+                try {
+                    const response = await fetch('/set_stream_url', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ url: urlInput }),
+                    });
+    
+                    const data = await response.json();
+    
+                    if (response.ok) {
+                        messageDiv.textContent = data.message;
+                        messageDiv.style.color = 'green';
+                    } else {
+                        messageDiv.textContent = data.error || 'Failed to set URL';
+                        messageDiv.style.color = 'red';
+                    }
+                } catch (error) {
+                    messageDiv.textContent = 'Error: Unable to connect to the server.';
+                    messageDiv.style.color = 'red';
+                }
+            });
+        </script>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; ParkMaster 2025</p>
+        </div>
+    </footer>
+</body>
+</html>

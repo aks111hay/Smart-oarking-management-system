@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkMaster - Smart Parking Lot System</title>
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}"> -->
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body style="background-image: url(../static/bg.png);">
+    <header>
+        <div class="container">
+            <h1>ParkMaster</h1>
+            <nav>
+                <a href="{{url_for('login')}}">Login</a>
+                <a href="{{url_for('register')}}">Sign Up</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="intro-section">
+        <div class="content" style="display:inline-block;">
+            <h2>Welcome to ParkMaster</h2>
+            <p>Effortlessly manage your parking lot with automatic database creation. Our smart system offers real-time parking data and optimized parking space usage. Choose ParkMaster for a seamless experience.</p>
+            <a href="{{url_for('login')}}" class="get-started-btn">Get Started</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ParkMaster</p>
+        <p>contact : askh123600@gmail.com</p>
+    </footer>
+</body>
+</html>
