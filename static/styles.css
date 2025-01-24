@@ -1,0 +1,447 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1A1A2E; /* Dark background */
+    color: #FFF;
+}
+
+/* Header Styles */
+header {
+    background-color: #0F3460; /* Deep blue */
+    padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 1000;
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: #FF6347; /* Tomato red on hover */
+}
+.intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+}
+
+.intro-section .content {
+    max-width: 600px;
+}
+
+.intro-section h2 {
+    font-size: 3rem;
+    color: #FF6347;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.get-started-btn {
+    padding: 15px 30px;
+    background-color: #FF6347; /* Tomato red */
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background-color: #FF4500; /* Darker red on hover */
+}
+footer {
+    background-color: #0F3460;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #3399ff;
+    border-radius: 5px;
+    background: #f0f8ff;
+    color: #333;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #66b3ff;
+    outline: none;
+    box-shadow: 0 0 5px #66b3ff;
+}
+
+/* Button */
+button {
+    padding: 10px;
+    background-color: #FF4500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #66b3ff;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #66b3ff;
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #99ccff;
+}
+/* Login Logo */
+.login-logo h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 30px;
+    color: #FF4500;
+    margin-bottom: 50px;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* Space between card and image */
+}
+
+/* Login Card */
+.login-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: left;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+/* Registration Page Specific Styles */
+.registration-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.info-section {
+    width: 50%;
+    padding: 50px;
+    background-color: #0f33608a;
+    color: #031c19fe;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.info-section h1 {
+    color: #1a75ff;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.form-section {
+    width: 40%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-section .form-group {
+    margin-bottom: 15px;
+}
+
+.form-section label {
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-section input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-section input:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+.btn-orange {
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-orange:hover {
+    background-color: #e65c00;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #1a75ff;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+.search-section {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Search section styles */
+.search-section {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Search box and input fields */
+.search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Label and input for search field */
+.search-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.search-input label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-input input {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Filter section (date picker) */
+.filters {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filters label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.filters input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+/* Button styling */
+#search-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Search results section */
+.search-results {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#results-table th, #results-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#results-table th {
+    background-color: #333;
+    color: white;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* General body styles */
+
+/* Summary section styles */
+.summary-section {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Summary box for displaying key stats */
+.summary-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+/* Individual summary item (Total Vehicles, Available Spaces) */
+.summary-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+/* Heading and text in the summary box */
+.summary-item h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.summary-item p {
+    font-size: 18px;
+    color: #007bff;
+}
+
+/* Recent entries table styling */
+.recent-entries {
+    margin-top: 40px;
+}
+
+#entries-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#entries-table th, #entries-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#entries-table th {
+    background-color: #333;
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
