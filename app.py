@@ -253,7 +253,6 @@ def register():
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
-        intake = request.form['intake']
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
         # Check if the user already exists
@@ -261,23 +260,35 @@ def register():
             flash('Email is already registered.', 'danger')
             return redirect(url_for('register'))
 
-        # Assign the user to the first parking lot
+        # Find a parking lot with available capacity
+        parking_lot = ParkingLot.query.filter(
+            db.func.count(ParkingLot.users) < ParkingLot.capacity
+        ).first()
+
+        if not parking_lot:
+            flash('No available parking lots at the moment. Please try again later.', 'danger')
+            return redirect(url_for('register'))
 
         # Create and save the new user
         new_user = User(
             name=name,
             email=email,
             password=hashed_password,
-            parking_lot_id = 1
+            parking_lot_id=parking_lot.id
         )
-        db.session.add(new_user)
-        parking_lot = ParkingLot(id = 1 ,capacity = intake)
-        db.session.add(parking_lot)
-        db.session.commit()
+        
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Registration successful! Please log in.', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'An error occurred: {e}', 'danger')
+            return redirect(url_for('register'))
 
-        flash('Registration successful! Please log in.', 'success')
-        return redirect(url_for('login'))
     return render_template('registration.html')
+
 
 @app.route('/summary')
 def summary():
