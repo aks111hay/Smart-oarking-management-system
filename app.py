@@ -135,7 +135,7 @@ def process_video(video_path, model):
                 thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
                 # Perform OCR to extract text
-                plate_text = pytesseract.image_to_string(thresh, config="--psm 8").strip()
+                plate_text = pytesseract.image_to_string(thresh, config="--psm 11").strip()
                 if plate_text:
                     
                     now = datetime.now()
